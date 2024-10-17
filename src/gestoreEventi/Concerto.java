@@ -55,5 +55,4 @@ public class Concerto extends Evento {
 	public String toString() {
 		return getDateTimeFormatter() + " - " + getTitle() + " - " + getPrezzoFormatter();
 	}
-	
 	}

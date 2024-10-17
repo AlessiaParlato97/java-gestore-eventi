@@ -10,8 +10,14 @@ public class Evento {
 	private int totPlaces;
 	private int totReserved;
 	
-	//Costruttori di controllo
+	//Costruttore
 	public Evento(String title, LocalDate date, int totPlaces) throws Exception {
+		//Inizializzazione attributi, valorizzati nel costruttore
+				this.title = title;
+				this.date = date;
+				this.totPlaces = totPlaces;
+				this.totReserved = 0; //inizializzazione a 0 dei posti prenotati
+			
 		//Controllo che la data non sia già passata
 		if (date.isBefore(LocalDate.now())) {
 			throw new Exception("La data dell'evento non può essere precedente alla data di oggi.");
@@ -21,11 +27,6 @@ public class Evento {
 			throw new Exception("Il numero di posti totali deve essere positivo.");
 		}
 		
-		//Inizializzazione attributi, valorizzati nel costruttore
-		this.title = title;
-		this.date = date;
-		this.totPlaces = totPlaces;
-		this.totReserved = 0; //inizializzazione a 0 dei posti prenotati
 		
 	}
 	
@@ -57,18 +58,11 @@ public class Evento {
         return totPlaces;
     }
 
-    public int setTotPlaces(int totPlaces) {
-        return totPlaces;
-    }   
-    
 	//Get-Set totReserved
     public int getTotReserved() {
         return totReserved;
     }
-    
-    /*public int setTotReserved() {
-    	this.totReserved = totReserved;
-    }*/
+ 
     
     
     
