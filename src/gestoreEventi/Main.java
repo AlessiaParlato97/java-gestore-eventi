@@ -11,7 +11,7 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 	
 	
 	// Richiesta ccelta dell'utente tra Evento o Concerto:
-	System.out.println("Evento (digita 1) o Concerto (digita 2)? ");
+	System.out.println("Scegli: \n 1. per creare un Evento, \n 2. per creare un Concerto, \n 3. per creare un Programma di eventi, \n 4. per Uscire dal programma. ");
 	int scelta = scanner.nextInt();
 	scanner.nextLine();  //Richiamo dello scanner causa consuma la newline rimasta dopo nextInt.
 	
@@ -163,10 +163,11 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
     	
         //CREAZIONE - INTERAZIONE CON L'UTENTE - (OGGETTO CLASSE PROGRAMMA EVENTI)
         try {
-       
+        	String dateInput; //dichiarazione della variabile
+        	
         	System.out.println("Inserisci il titolo del programma eventi: ");
             String titoloProgramma = scanner.nextLine();
-            ProgrammaEventi programma = new ProgrammaEventi("", new Date, "", titoloProgramma);
+            ProgrammaEventi programma = new ProgrammaEventi(titoloProgramma);
             boolean scegli = true;
             
 //---- Creazione dell'oggetto PROGRAMMA
@@ -179,10 +180,12 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 	   while (scegli) {
 		   //Opzioni per l'utente:
 		   System.out.println("Scegliere un'opzione:");
-		   System.out.println("1. Aggiungere nuovo evento");
-		   System.out.println("2. Mostrare numero eventi totali aggiunti.");
-		   System.out.println("3. Svuotare il programma eventi.");
-		   System.out.println("4. Uscire.");
+		   System.out.println("1. Aggiungere nuovo evento.");
+		   System.out.println("2. Mostra Lista di eventi in una data specifica. ");
+		   System.out.println("3. Mostrare numero eventi totali aggiunti.");
+		   System.out.println("4. Svuotare il programma eventi.");
+		   System.out.println("5. Visualizza il programma creato.");
+		   System.out.println("6. Uscire.");
 		   String sceltaProgramma = scanner.nextLine();
 		   
 		   //Creazione scelte
@@ -190,12 +193,12 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 		   
 		   case "1": //Aggiungere evento
 			 //Richiesta dell'utente (title):
-		        System.out.println("Inserisci il titolo del programma eventi: ");
+		        System.out.println("Inserisci il titolo del nuovo evento: ");
 		        String title = scanner.nextLine();
 		        
 		      //Richiesta all'utente (date):
-		        System.out.println("Inserire data dell' evento programmato: gg/mm/yyyy ");
-		        String dateInput = scanner.nextLine();
+		        System.out.println("Inserire data dell'evento programmato: gg/mm/yyyy ");
+		        dateInput = scanner.nextLine();
 		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		        LocalDate date = LocalDate.parse(dateInput, formatter);
 		      	/* Questo metodo cerca di convertire una stringa(in input dall'utente)in un oggetto.
@@ -209,19 +212,37 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 		        Evento nuovoEvento = new Evento(title, date, totPlaces);
 		        
 		        programma.addEvents(nuovoEvento);
+		        
 		        System.out.println("Nuovo evento aggiunto.");
 		        break;
 		   
-		   case "2": //Mostrare il numero totale di eventi.
+		   case "2" : //Mostrare una lista di eventi programmati nella stessa data
+			   System.out.println("Inserisci la data degli eventi che vuoi vedere.");
+			   dateInput = scanner.nextLine();
+			   DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				LocalDate date1 = LocalDate.parse(dateInput, formatter1);
+				/* Questo metodo cerca di convertire una stringa(in input dall'utente)in un oggetto.
+				  Il formato atteso è YYYY-MM-DD, se diverso "parse()" evoca un'eccezione:
+				 (DateTimeParseException) per indicare la NON validazione della stringa.*/
+			   
+				//System.out.println(programma.getEventsByDate(programma, date1));
+				System.out.println(programma.getEventsByDateTest(date1));
+			   break;
+		        
+		   case "3": //Mostrare il numero totale di eventi.
 			   System.out.println("Il numero totale di eventi nel programma è: " + programma.getNumberEvents());
 			   break;
 		
-		   case "3": //Svuotare la lista programma eventi.
+		   case "4": //Svuotare la lista programma eventi.
 			   programma.clearEvents();
 			   System.out.println("La lista di eventi è stata svuotata completamente.");
 			   break;
 			   
-		   case "4": //Uscita dal programma.
+		   case "5": //Restituisce una stringa che mostra il titolo del programma e tutti gli eventi ordinati per data nella forma: data - titolo
+			   System.out.println("Programma (ordinato): \n" + programma.programmaInOrdine());
+			   break;
+			   
+		   case "6": //Uscita dal programma.
 			   scegli = false;
 			   System.out.println("Uscita dal programma.");
 			   break;
@@ -242,7 +263,7 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
         
         
     
-//>>Se la scelta non è tra 1 / 2 / 3
+//>>Se la scelta non è tra 1 / 2 / 3 / 4 / 5 
 } else {
         System.out.println("Scelta non valida.");
   }
