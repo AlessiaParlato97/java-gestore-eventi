@@ -6,17 +6,17 @@ import java.time.*;
 //import java.time.LocalDate;
 
 public class ProgrammaEventi {
-    //Attributi
+    //Dichiarazione attributi:
 	private String titoloProgramma;
 	private List<Evento> events;
 
-	//Costruttore
+	//Inizzializzazione attributi:
 	public ProgrammaEventi(String titoloProgramma) throws Exception {
 		this.titoloProgramma = titoloProgramma;
 		this.events = new ArrayList<>();
 	}
 	
-	//Metodo per aggiungere evento
+	//Metodo per aggiungere un evento a un programma
 	public void addEvents(Evento evento) throws Exception {
 		LocalDate dataCorrente = LocalDate.now();
 		if (dataCorrente.isBefore(dataCorrente)) {
@@ -25,19 +25,6 @@ public class ProgrammaEventi {
 		 events.add(evento);
 		}
 	}
-	
-	//Metodo che restituisce una lista con tutti gli eventi presenti in una certa data
-	/*public List<Evento> getEventsByDate(ProgrammaEventi programmiEventi, LocalDate date) {
-		//events.forEach(evento -> {}); //LambdaExpression(sistassi ->)
-		List<Evento> listaEvento = new ArrayList<>(); //inizializzazione nuova lista evento vuota
-		
-		for (Evento event: programmiEventi.getEvents()) {
-			if (event.getDate().toString().equalsIgnoreCase(date.toString())){ //prelevo data dell'evento, confronto con l'input data utente
-			   listaEvento.add(event); //aggiunta evento singolo nella nuova lista (inizialmente vuota)
-			}
-		}
-		return listaEvento;
-	}*/
 	
 	//Metodo che restituisce una lista con tutti gli eventi presenti in una certa data
 	public List<Evento> getEventsByDateTest(LocalDate date) {
@@ -51,6 +38,7 @@ public class ProgrammaEventi {
 		}
 		return listaEvento;
 	}
+	
 	//Getter della lista eventi
 	public List<Evento> getEvents() {
 		return events;

@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Evento {
 
-	//Attributi evento:
+	//Dichiarazione attributi evento:
 	private String title;
 	private LocalDate date;
 	private int totPlaces;
@@ -12,7 +12,7 @@ public class Evento {
 	
 	//Costruttore
 	public Evento(String title, LocalDate date, int totPlaces) throws Exception {
-		//Inizializzazione attributi, valorizzati nel costruttore
+		//Inizializzazione attributi, valorizzati nel costruttore:
 				this.title = title;
 				this.date = date;
 				this.totPlaces = totPlaces;
@@ -46,19 +46,19 @@ public class Evento {
         return date;
     }
 
-    public void setDate(LocalDate date) throws Exception{
+    public void setDate(LocalDate date) throws Exception {
         if (date.isBefore(LocalDate.now())) {
         	throw new Exception("La data dell'evento non può essere già passata.");
         }
         this.date = date;
     }
     
-	//Get-Set totPlaces
+	//Get totPlaces
     public int getTotPlaces() {
         return totPlaces;
     }
 
-	//Get-Set totReserved
+	//Get totReserved
     public int getTotReserved() {
         return totReserved;
     }

@@ -4,15 +4,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-public class Concerto extends Evento {
+public class Concerto extends Evento { //utilizzo del Polimorfismo
 	
-	//Attributi
+	//Dichiarazione attributi:
 	private LocalTime time;
 	private double prezzo;
 	
 	//Costruttore
 	public Concerto(String title, LocalDate date, int totPlaces, LocalTime time, double prezzo) throws Exception {
-		 //Inizializzazione attributi
+		 //Inizializzazione attributi:
 		super(title, date, totPlaces);
 		this.time = time;
 		this.prezzo = prezzo;
@@ -20,7 +20,7 @@ public class Concerto extends Evento {
 		
 	
 	
-	//Getter & Setter
+	//Utilizzo dell'Incapsulamento
 	//Get-Set time:
 	public LocalTime getTime() {
 		return time;
@@ -47,8 +47,8 @@ public class Concerto extends Evento {
 	}
 	
 	//Metodo per formattare il prezzo: (DA RIVEDERE)
-	public String getPrezzoFormatter() {
-		return String.format("%.2f€", prezzo);
+	public String getPrezzoFormatter() { //serve a formattare un prezzo in modo che venga visualizzato con due cifre decimali e il simbolo dell’euro (€) alla fine.
+		return String.format("%.2f€", prezzo); //String.format è un metodo che permette di formattare una stringa con un modello specifico indicato: prezzo verrà rappresentato come un numero in virgola (float) con due cifre decimali.
 	}
 	
 	@Override //Metodo toString() che converte una Stringa in un oggetto
