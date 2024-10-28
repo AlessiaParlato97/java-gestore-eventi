@@ -11,7 +11,7 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 	
 	
 	// Richiesta scelta dell'utente tra Evento, Concerto e ProgrammaEventi:
-	System.out.println("Scegli: \n 1. per creare un Evento, \n 2. per creare un Concerto, \n 3. per creare un Programma di eventi, \n 4. per Uscire dal programma. ");
+	System.out.println("Scegli: \n 1. per creare un Evento, \n 2. per creare un Concerto, \n 3. per creare un Programma di eventi.");
 	int scelta = scanner.nextInt(); 
 	scanner.nextLine();  //Richiamo dello scanner causa: consuma la newline rimasta dopo nextInt.
 	
@@ -189,20 +189,21 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 		   System.out.println("4. Svuotare il programma eventi.");
 		   System.out.println("5. Visualizza il programma creato.");
 		   System.out.println("6. Uscire.");
+		   
 		   //String sceltaProgramma = scanner.nextLine();
-		   System.out.println("Scelta programma: " + sceltaProgramma);
-
+		   System.out.println("Scelta programma: ");
+           sceltaProgramma = scanner.nextLine();
 		
 		  
 		  
-	   } while (scegli);
 	   
 	 //Creazione ed elaborazione scelte classe Programma
 	   switch (sceltaProgramma.trim()) {
 	   
 	   
 	   case "1": //Aggiungere evento
-		 //Richiesta dell'utente (title):
+		 
+		   //Richiesta dell'utente (title):
 	        System.out.println("Inserisci il titolo del nuovo evento: ");
 	        String title = scanner.nextLine();
 	        
@@ -260,7 +261,9 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 	   /*default:
 		   System.out.println("Scelta inserita non valida. Riprova.");
 		   break;*/
+	  
 	   }
+	   } while (scegli);
 		   
     	
        } catch (Exception e) { //Cattura errore
