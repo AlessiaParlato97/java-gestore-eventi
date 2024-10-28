@@ -74,6 +74,7 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 		//Richiesta all'utente se disdire quantità di prenotazioni:
 		System.out.println("Inserire, se ci sono, quanti posti disdire: ");
 		int disdette = scanner.nextInt();
+		scanner.nextLine(); // Consuma la newline rimasta dopo nextInt
 		
 		       //Metodo che esegue la incrementazione dei posti totali (decrementazione dei posti riservati) o rivela errori(rif. classe evento):
 		         for (int i = 0; i < disdette; i++) {
@@ -219,6 +220,7 @@ try (Scanner scanner = new Scanner(System.in)) { //inserire tutto in un try cons
 	      //Richiesta all'utente (totPlaces):
 			System.out.println("Inserire numero posti disponibili totali: ");
 			int totPlaces = scanner.nextInt();
+			scanner.nextLine(); // Consuma la newline rimasta dopo nextInt
 	        
 	        Evento nuovoEvento = new Evento(title, date, totPlaces);
 	        
